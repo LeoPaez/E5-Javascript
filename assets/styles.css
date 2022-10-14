@@ -159,7 +159,7 @@ top: 178px;}
                   border-radius: 15px;
                   }
 .product-recomend img {
-    position: fixed;
+    
     height: 62px;
 width: 62px;
 left: 211px;
@@ -168,8 +168,7 @@ border-radius: 16px;
 
     
     
-     
-     mix-blend-mode: normal;
+    
     
      
  }
