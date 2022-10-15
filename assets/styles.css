@@ -1,4 +1,5 @@
 :root {
+  --body-black: #131415;
   --black: #252525;
   --yellow: #ffa400;
   --red: #fc2933;
@@ -7,10 +8,12 @@
 
   --gradient_1: #ffa100;
   --gradient_2: #fb103d;
+  --gradient-hover_1: #bd7904;
+  --gradient-hover_2: #c30729;
 }
 body {
   position: relative;
-  background: var(--black);
+  background: var(--body-black);
 }
 * {
   font-family: "Montserrat";
@@ -80,7 +83,7 @@ header {
   line-height: 131.02%;
   /* or 86px */
 
-  color: #ffffff;
+  color: var(--white);
 }
 .title2 {
   display: block;
@@ -96,7 +99,7 @@ header {
   line-height: 131.02%;
   /* or 67px */
 
-  color: #ffffff;
+  color: var(--white);
 }
 
 .title2 span {
@@ -125,8 +128,12 @@ header {
   border-radius: 15px;
 }
 .boton1:hover {
-  background: linear-gradient(98.81deg, #bd7904 -0.82%, #c30729 101.53%);
-  color: #4d4d4d;
+  background: linear-gradient(
+    98.81deg,
+    var(--gradient-hover_1) -0.82%,
+    var(--gradient-hover_2) 101.53%
+  );
+  color: var(--gray);
 }
 .pizza1 {
   position: absolute;
@@ -157,7 +164,7 @@ header {
   line-height: 131.02%;
   /* or 29px */
 
-  color: #ffffff;
+  color: var(--white);
 }
 
 .cont-recomendacion {
@@ -177,7 +184,7 @@ header {
   left: 197px;
   top: 583px;
 
-  background: #252525;
+  background: var(--black);
   box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
   border-radius: 15px;
   place-content: space-evenly;
@@ -214,8 +221,12 @@ header {
   letter-spacing: 0.5px;
 }
 .btn1:hover {
-  background: linear-gradient(98.81deg, #bd7904 -0.82%, #c30729 101.53%);
-  color: #4d4d4d;
+  background: linear-gradient(
+    98.81deg,
+    var(--gradient-hover_1) -0.82%,
+    var(--gradient-hover_2) 101.53%
+  );
+  color: var(--gray);
 }
 .name {
   font-family: "Montserrat";
@@ -225,7 +236,7 @@ header {
   line-height: 131.02%;
   /* identical to box height, or 20px */
 
-  color: #ffffff;
+  color: var(--white);
 }
 .description {
   font-family: "Montserrat";
@@ -237,7 +248,7 @@ header {
 
   letter-spacing: 0.5px;
 
-  color: #ffffff;
+  color: var(--white);
 
   mix-blend-mode: normal;
   opacity: 0.3;
