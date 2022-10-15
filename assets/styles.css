@@ -393,5 +393,110 @@ flex-flow: row;
 .bat-rec {
   left: 1275px;
 }
-
 /* Fin de categorias */
+
+
+/* Los mas populares */
+
+.populares {
+  position: absolute;
+  width: 278px;
+  height: 23px;
+  left: 120px;
+  top: 1066px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 131.02%;
+  color: #FFFFFF;
+}
+.producto-cont {
+  position: absolute;
+  width: 282px;
+  height: 213px;
+  left: 132px;
+  top: 1120px;
+  background: #252525;
+  box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
+  border-radius: 15px;
+}
+.pizza-img {
+  position: absolute;
+  left: 10.25%;
+  right: 74.07%;
+  top: 60.14%;
+  bottom: 34.73%;
+  mix-blend-mode: normal;
+  border-radius: 16px;
+}
+.pizza-nombre {
+  position: absolute;
+  height: 20px;
+  left: 10.19%;
+  right: 85.12%;
+  top: calc(50% - 20px/2 + 309.5px);
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 131.02%;
+  color: #FFF;
+}
+.pizza-desc {
+  position: absolute;
+  height: 17px;
+  left: 10.19%;
+  right: 80.69%;
+  top: calc(50% - 17px/2 + 332px);
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0.5px;
+  color: #FFF;
+  mix-blend-mode: normal;
+  opacity: 0.3;
+}
+.pizza-precio {
+  position: absolute;
+  height: 25px;
+  left: 10.21%;
+  right: 86.28%;
+  top: calc(50% - 25px/2 + 358px);
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 131.02%;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btn-agregar {
+  position: absolute;
+  width: 54px;
+  height: 15px;
+  left: 324px;
+  top: 1293px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  color: #FFF;
+}
+.btn-agregar-fondo {
+  position: absolute;
+  width: 85px;
+  height: 29px;
+  left: 308px;
+  top: 1286px;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+  border-radius: 17.5px;
+}
+/* Fin los mas populares */
