@@ -230,4 +230,168 @@ flex-flow: row;
     -webkit-text-fill-color: transparent;
     background-clip: text;
    
-    }
+}
+
+/* Categorias */
+
+.categorias {
+  position: absolute;
+  width: 87px;
+  height: 20px;
+  left: 120px;
+  top: 770px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 131.02%;
+  color: #FFFFFF;
+}
+.categoria-cont {
+  position: absolute;
+  width: 147px;
+  height: 171px;
+  left: 120px;
+  top: 821px;
+  background: #252525;
+  box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
+  border-radius: 15px;
+}
+
+.categoria-img {
+  position: absolute;
+  width: 85px;
+  height: 86px;
+  left: 149px;
+  top: 837px;
+}
+.blurred {
+  filter: blur(2px);
+}
+.categoria-rectangulo {
+  position: absolute;
+  width: 24px;
+  height: 4px;
+  left: 181px;
+  top: 970px;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+  box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
+  border-radius: 15px;
+}
+.categoria-nombre {
+  position: absolute;
+  width: 76px;
+  height: 20px;
+  left: 155px;
+  top: 938px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 131.02%;
+  text-align: center;
+  color: #FFF;
+}
+.activo {
+  background: #4D4D4D;
+}
+
+.pizzas-cont {
+  left: 299px;
+}
+.pizzas-img {
+  width: 71px;
+  height: 71px;
+  left: 337px;
+  top: 846px;
+}
+.pizzas-n {
+  width: 46px;
+  left: 349px;
+}
+.pizzas-rec {
+  left: 360px;
+}
+
+.hamb-cont {
+  left: 482px;
+}
+.hamb-img {
+  width: 85px;
+  height: 85px;
+  left: 513px;
+  top: 842px;
+}
+.hamb-n {
+  width: 116px;
+  left: 497px;
+}
+.hamb-rec {
+  left: 543px;
+}
+
+.papas-cont {
+  left: 665px;
+}
+.papas-img {
+  width: 83px;
+  height: 83px;
+  left: 695px;
+  top: 841px;
+}
+.papas-n {
+  width: 74px;
+  left: 702px;
+}
+.papas-rec {
+  left: 726px;
+}
+
+.wraps-cont {
+  left: 848px;
+}
+.wraps-img {
+  width: 86px;
+  height: 86px;
+  left: 878px;
+  top: 839px;
+}
+.wraps-n {
+  width: 48px;
+  left: 898px;
+}
+.wraps-rec {
+  left: 909px;
+}
+
+.mex-cont {
+  left: 1031px;
+}
+.mex-img {
+  left: 1060px;
+  top: 839px;
+}
+.mex-n {
+  width: 110px;
+  left: 1052px;
+}
+.mex-rec {
+  left: 1092px;
+}
+
+.bat-cont {
+  left: 1214px;
+}
+.bat-img {
+  width: 86px;
+  left: 1240px;
+}
+.bat-n {
+  width: 58px;
+  left: 1258px;
+}
+.bat-rec {
+  left: 1275px;
+}
+
+/* Fin de categorias */
