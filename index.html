@@ -43,7 +43,7 @@
     <h2 class="recommended__title">Hoy te recomendamos</h2>
     <div class="recommended__cards">
       <div class="card box-shadow ">
-        <img class="card__img" src="./img/PhotoMenu.png" alt="pizza recomendada">
+        <img src="./img/PhotoMenu.png" alt="pizza recomendada">
         <div class="card__info">
           <p class="card__name">Bennzianna</p>
           <p class="card__description">La mas completa</p>
@@ -52,7 +52,7 @@
         <button class="btn">Agregar</button>
       </div>
       <div class="card box-shadow ">
-        <img class="card__img" src="./img/PhotoMenu_2.png" alt="pizza recomendada">
+        <img src="./img/PhotoMenu_2.png" alt="pizza recomendada">
         <div class="card__info">
           <p class="card__name">Tronco-Pizza</p>
           <p class="card__description">Para todo el día</p>
@@ -61,7 +61,7 @@
         <button class="btn">Agregar</button>
       </div>
       <div class="card box-shadow ">
-        <img class="card__img" src="./img/PhotoMenu_3.png" alt="pizza recomendada">
+        <img src="./img/PhotoMenu_3.png" alt="pizza recomendada">
         <div class="card__info">
           <p class="card__name">Papas | Provenzal</p>
           <p class="card__description">Van como piña</p>
@@ -73,38 +73,38 @@
   </section>
   <section class="categories container">
     <h2 class="categories__title">Categorias</h2>
-    <div class="categories__cards ">
+    <div class="categories__cards">
       <div class="card card--category box-shadow">
         <img class="card__icon" src="./img/pizza2.png" alt="Foto de categoria">
         <p class="card__name">Populares</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="pizzas">
         <img class="card__icon" src="./img/pizzas.png" alt="Foto de categoria">
         <p class="card__name">Pizzas</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="hamburguesas">
         <img class="card__icon" src="./img/hamburguesas.png" alt="Foto de categoria">
         <p class="card__name">Hamburguesas</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="napapuki">
         <img class="card__icon" src="./img/napapuki.png" alt="Foto de categoria">
         <p class="card__name">Napapuki</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="wraps">
         <img class="card__icon" src="./img/wraps.png" alt="Foto de categoria">
         <p class="card__name">Wraps</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="mex-food">
         <img class="card__icon" src="./img/mex-food.png" alt="Foto de categoria">
         <p class="card__name">Mexican Food</p>
         <div class="line-gradient"></div>
       </div>
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow" data-category="batidos">
         <img class="card__icon" src="./img/batidos.png" alt="Foto de categoria">
         <p class="card__name">Batidos</p>
         <div class="line-gradient"></div>
@@ -115,8 +115,8 @@
     <h2 class="pizzas__title">Las mas populares</h2>
     <div class="pizzas__cards">
       <!-- Card a renderizar  -->
-      <!-- <div class="card card--pizza">
-        <img class="card__img" src="./img/la-mr-pit.png" alt="pizza popular">
+      <div class="card card--pizza">
+        <img class="card__img" src="/img/la-mr-pit.png" alt="pizza popular">
         <div class="card__container-info">
           <div class="card__info">
             <p class="card__name">Bennzianna</p>
@@ -126,7 +126,7 @@
           <button class="btn">Agregar</button>
         </div>
       </div>
-    </div> -->
+    </div>
   </main>
   <footer class="footer container">
     <div class="footer__links">
@@ -199,6 +199,7 @@
       <a class="cart__link" href="">Ver más productos</a>
     </div>
   </div>
+  <script src="assets/data.js"></script>
   <script src="assets/main.js"></script>
 </body>
 

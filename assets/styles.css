@@ -363,6 +363,13 @@ img {
   justify-content: space-between;
   margin-top: 10px;
 }
+.card__img {
+  width: 237px;
+  height: 97px;
+  border-radius: 16px;
+  background-position: center 0;
+  object-fit: cover;
+}
 
 /******* Footer ********/
 
