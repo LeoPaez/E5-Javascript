@@ -74,39 +74,39 @@
   <section class="categories container">
     <h2 class="categories__title">Categorias</h2>
     <div class="categories__cards">
-      <div class="card card--category box-shadow">
+      <div class="card card--category box-shadow active">
         <img class="card__icon" src="./img/pizza2.png" alt="Foto de categoria">
         <p class="card__name">Populares</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="pizzas">
-        <img class="card__icon" src="./img/pizzas.png" alt="Foto de categoria">
-        <p class="card__name">Pizzas</p>
+        <img class="card__icon" src="./img/pizzas.png" data-category="pizzas" alt="Foto de categoria">
+        <p class="card__name" data-category="pizzas">Pizzas</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="hamburguesas">
-        <img class="card__icon" src="./img/hamburguesas.png" alt="Foto de categoria">
-        <p class="card__name">Hamburguesas</p>
+        <img class="card__icon" src="./img/hamburguesas.png" data-category="hamburguesas" alt="Foto de categoria">
+        <p class="card__name" data-category="hamburguesas">Hamburguesas</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="napapuki">
-        <img class="card__icon" src="./img/napapuki.png" alt="Foto de categoria">
-        <p class="card__name">Napapuki</p>
+        <img class="card__icon" src="./img/napapuki.png" data-category="napapuki" alt="Foto de categoria">
+        <p class="card__name" data-category="napapuki">Napapuki</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="wraps">
-        <img class="card__icon" src="./img/wraps.png" alt="Foto de categoria">
-        <p class="card__name">Wraps</p>
+        <img class="card__icon" src="./img/wraps.png" data-category="wraps" alt="Foto de categoria">
+        <p class="card__name" data-category="wraps">Wraps</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="mex-food">
-        <img class="card__icon" src="./img/mex-food.png" alt="Foto de categoria">
-        <p class="card__name">Mexican Food</p>
+        <img class="card__icon" src="./img/mex-food.png" data-category="mex-food" alt="Foto de categoria">
+        <p class="card__name" data-category="mex-food">Mexican Food</p>
         <div class="line-gradient"></div>
       </div>
       <div class="card card--category box-shadow" data-category="batidos">
-        <img class="card__icon" src="./img/batidos.png" alt="Foto de categoria">
-        <p class="card__name">Batidos</p>
+        <img class="card__icon" src="./img/batidos.png" data-category="batidos" alt="Foto de categoria">
+        <p class="card__name" data-category="batidos">Batidos</p>
         <div class="line-gradient"></div>
       </div>
     </div>
@@ -115,7 +115,7 @@
     <h2 class="pizzas__title">Las mas populares</h2>
     <div class="pizzas__cards">
       <!-- Card a renderizar  -->
-      <div class="card card--pizza">
+      <!-- <div class="card card--pizza">
         <img class="card__img" src="/img/la-mr-pit.png" alt="pizza popular">
         <div class="card__container-info">
           <div class="card__info">
@@ -125,7 +125,7 @@
           </div>
           <button class="btn">Agregar</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </main>
   <footer class="footer container">
@@ -136,7 +136,7 @@
     </div>
     <p class="footer__p">Hecho con 💖 en <span class="footer__span">NUCBAZAPPI</span></p>
   </footer>
-  <!-- CArrito de compras  -->
+  <!-- Carrito de compras  -->
   <div class="cart " id="cart">
     <span class="btn btn--close" id="close">X</span>
     <span class="cart__heading">Tus Productos</span>

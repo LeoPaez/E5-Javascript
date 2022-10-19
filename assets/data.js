@@ -2,7 +2,7 @@ const products = [
   // Pizzas
   {
     id: 1,
-    img: "/img/la-mr-pit",
+    img: "/img/la-mr-pit.png",
     name: "La Mr. Pit",
     desc: "Solo para expertos",
     price: 350,
@@ -117,7 +117,7 @@ const products = [
   {
     id: 15,
     img: "/img/papas-a-caballo.jpg",
-    name: "Papas a caballo",
+    name: "Papas a Caballo",
     desc: "¡Argentina papá!",
     price: 260,
     category: "napapuki",
@@ -149,7 +149,7 @@ const products = [
   },
   {
     id: 19,
-    img: "/img/wrap-vegano.jpg",
+    img: "/img/wrap-vegano.jpeg",
     name: "Wrap Vegano",
     desc: "Puede contener carne",
     price: 340,
@@ -174,3 +174,15 @@ const products = [
     category: "batidos",
   }
 ]
+
+const mostPopularProducts = () => {
+  const popularProducts = []
+  for (let i = 0; i < 16; i++) {
+    if (i % 2 == 0) {
+      popularProducts.push(products[i])
+    }
+  }
+  return popularProducts;
+}
+
+console.log(mostPopularProducts());
