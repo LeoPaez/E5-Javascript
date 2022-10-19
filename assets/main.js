@@ -97,6 +97,18 @@ const toggleCart = () => {
   overlay.classList.toggle("show-overlay");
 };
 
+//cerrar el carrito cuando scrolleamos
+const closeOnScroll = () => {
+  if (!productsCart.classList.contains("is-active")) return;
+  productsCart.classList.remove("is-active");
+  overlay.classList.remove("show-overlay");
+};
+//cerrar el carrito cuando hacemos click fuera del carrito
+const closeOnOverlayClick = () => {
+  productsCart.classList.remove("is-active");
+  overlay.classList.remove("show-overlay");
+};
+
 const init = () => {
   renderProducts();
   //Aplicar filtro
@@ -104,7 +116,8 @@ const init = () => {
   //Carrito
   btnOpenCart.addEventListener("click", toggleCart);
   btnCloseCart.addEventListener("click", toggleCart);
-
+  window.addEventListener("scroll", closeOnScroll);
+  overlay.addEventListener("click", closeOnOverlayClick);
   /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");
