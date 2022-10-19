@@ -2,7 +2,7 @@ const products = [
   // Pizzas
   {
     id: 1,
-    img: "/img/la-mr-pit.png",
+    img: "img/la-mr-pit.png",
     name: "La Mr. Pit",
     desc: "Solo para expertos",
     price: 350,
@@ -10,7 +10,7 @@ const products = [
   },
   {
     id: 2,
-    img: "/img/q-jamone.png",
+    img: "img/q-jamone.png",
     name: "¡Q'Jamone!",
     desc: "c/jamon crudo",
     price: 350,
@@ -18,7 +18,7 @@ const products = [
   },
   {
     id: 3,
-    img: "/img/la-charly-garcia.png",
+    img: "img/la-charly-garcia.png",
     name: "La Charly Garcia",
     desc: "BASTA",
     price: 380,
@@ -26,7 +26,7 @@ const products = [
   },
   {
     id: 4,
-    img: "/img/la-maradona.png",
+    img: "img/la-maradona.png",
     name: "La Maradona",
     desc: "¡Eterna!",
     price: 450,
@@ -34,7 +34,7 @@ const products = [
   },
   {
     id: 5,
-    img: "/img/picantovich.png",
+    img: "img/picantovich.png",
     name: "Picantovich",
     desc: "Pica 2 veces",
     price: 750,
@@ -42,7 +42,7 @@ const products = [
   },
   {
     id: 6,
-    img: "/img/la-hasbulla.png",
+    img: "img/la-hasbulla.png",
     name: "La Hasbulla",
     desc: "En honor al 1",
     price: 990,
@@ -50,7 +50,7 @@ const products = [
   },
   {
     id: 7,
-    img: "/img/leo-messi.png",
+    img: "img/leo-messi.png",
     name: "Leo Messi",
     desc: "¡De pie señores!",
     price: 10,
@@ -58,7 +58,7 @@ const products = [
   },
   {
     id: 8,
-    img: "/img/nick-gi.png",
+    img: "img/nick-gi.png",
     name: "Nick Gi",
     desc: "La que desaparece",
     price: "Gratis",
@@ -67,7 +67,7 @@ const products = [
   // Hamburguesas
   {
     id: 9,
-    img: "/img/cheese.jpg",
+    img: "img/cheese.jpg",
     name: "Doble-Cheese",
     desc: "¡Pedila triple!",
     price: 300,
@@ -75,7 +75,7 @@ const products = [
   },
   {
     id: 10,
-    img: "/img/bacon.jpg",
+    img: "img/bacon.jpg",
     name: "Mega Bacon",
     desc: "¡Ahora con más!",
     price: 380,
@@ -83,7 +83,7 @@ const products = [
   },
   {
     id: 11,
-    img: "/img/americana.jpg",
+    img: "img/americana.jpg",
     name: "Americana",
     desc: "La clásica",
     price: 350,
@@ -91,7 +91,7 @@ const products = [
   },
   {
     id: 12,
-    img: "/img/vegan-burger.jpg",
+    img: "img/vegan-burger.jpg",
     name: "Vegana",
     desc: "Puede contener carne",
     price: 400,
@@ -100,7 +100,7 @@ const products = [
   // Napapuki
   {
     id: 13,
-    img: "/img/Papas-fritas.webp",
+    img: "img/Papas-fritas.webp",
     name: "Porcion de Papas",
     desc: "Abundante",
     price: 200,
@@ -108,7 +108,7 @@ const products = [
   },
   {
     id: 14,
-    img: "/img/papas-god.jpg",
+    img: "img/papas-god.jpg",
     name: "Papas God",
     desc: "Las mejores",
     price: 300,
@@ -116,7 +116,7 @@ const products = [
   },
   {
     id: 15,
-    img: "/img/papas-a-caballo.jpg",
+    img: "img/papas-a-caballo.jpg",
     name: "Papas a Caballo",
     desc: "¡Argentina papá!",
     price: 260,
@@ -124,7 +124,7 @@ const products = [
   },
   {
     id: 16,
-    img: "/img/papas-bravas.jpg",
+    img: "img/papas-bravas.jpg",
     name: "Papas bravas",
     desc: "Al mejor estilo",
     price: 320,
@@ -133,7 +133,7 @@ const products = [
   // Wraps
   {
     id: 17,
-    img: "/img/wrap-carne.jpg",
+    img: "img/wrap-carne.jpg",
     name: "Wrap de Carne",
     desc: "Rellenito",
     price: 380,
@@ -141,7 +141,7 @@ const products = [
   },
   {
     id: 18,
-    img: "/img/wrap-pollo.jpg",
+    img: "img/wrap-pollo.jpg",
     name: "Wrap de Pollo",
     desc: "Mediterraneo",
     price: 380,
@@ -149,7 +149,7 @@ const products = [
   },
   {
     id: 19,
-    img: "/img/wrap-vegano.jpeg",
+    img: "img/wrap-vegano.jpeg",
     name: "Wrap Vegano",
     desc: "Puede contener carne",
     price: 340,
@@ -159,7 +159,7 @@ const products = [
   // Batidos
   {
     id: 20,
-    img: "/img/batido-chocolate.jpg",
+    img: "img/batido-chocolate.jpg",
     name: "Batido Chocolate",
     desc: "Muy chocolatoso",
     price: 250,
@@ -167,7 +167,7 @@ const products = [
   },
   {
     id: 21,
-    img: "/img/batido-vainilla.jpg",
+    img: "img/batido-vainilla.jpg",
     name: "Batido Vainilla",
     desc: "Con crema",
     price: 250,

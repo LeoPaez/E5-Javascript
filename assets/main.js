@@ -11,15 +11,22 @@ const categories = document.querySelector(".categories__cards");
 const categoriesList = document.querySelectorAll(".card--category");
 // overlay
 const overlay = document.querySelector(".overlay");
+//selecciono btn-buy
+const btnBuy = document.querySelector(".btn-buy");
+//selecciono btn-delete
+const btnDelete = document.querySelector(".btn-delete");
+//El total en precio del carrito
+const total = document.querySelector(".total");
+
 
 //funcion para buscar en localStorage
-let cartStorage = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 //funcion para guardar en localStorage
 const saveLocalStorage = (cartList) => {
   localStorage.setItem("cart", JSON.stringify(cartList));
 };
 
-console.log(cartStorage);
+console.log(cart);
 
 const renderProduct = (product) => {
   const { img, name, desc, price } = product;
@@ -112,7 +119,7 @@ const closeOnOverlayClick = () => {
 };
 //funciones del carrito
 const renderCartProduct = (cartProduct) => {
-  const { img, name, desc, price, quantity } = cartProduct;
+  const {id, img, name, desc, price, quantity } = cartProduct;
   return `    
       <div class="card card--cart box-shadow">
           <img
@@ -135,7 +142,7 @@ const renderCartProduct = (cartProduct) => {
 
 const renderCart = () => {
   // si el carrito esta vacio muestra un msg
-  if (!productsCartStorage.length) {
+  if (!cart.length) {
     productsCartStorage.innerHTML = `<p class="empty-msg"> No hay productos en el carrito. </p>`;
     return;
   }
@@ -144,10 +151,25 @@ const renderCart = () => {
 };
 //funcion para para conseguir el total entre todos los productos del carrito
 const getCartTotal = () => {
-  return cartStorage.reduce(
+  return cart.reduce(
     (acc, cur) => acc + Number(cur.price) * Number(cur.quantity),
     0
   );
+};
+//renderiza el total de los productos
+const showTotal = () => {
+  total.innerHTML = `${getCartTotal().toFixed(2)} $`;
+};
+
+//funcion para deshabilitar los botones si no hay nada en el carrito
+const disableBtn = (btn) => {
+  if (!cart.length) {
+    btn.classList.remove("btn")
+    btn.classList.add("disabled");
+    return;
+  }
+  btn.classList.add("btn")
+  btn.classList.remove("disabled");
 };
 
 const init = () => {
@@ -159,6 +181,10 @@ const init = () => {
   btnCloseCart.addEventListener("click", toggleCart);
   window.addEventListener("scroll", closeOnScroll);
   overlay.addEventListener("click", closeOnOverlayClick);
+  document.addEventListener("DOMContentLoaded", renderCart);
+  document.addEventListener("DOMContentLoaded",showTotal);
+  disableBtn(btnDelete);
+  disableBtn(btnBuy);
   /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");
@@ -168,4 +194,4 @@ const init = () => {
   });*/
 };
 
-window.addEventListener("DOMContentLoaded", init);
+init();
