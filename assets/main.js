@@ -1,4 +1,6 @@
 const productsCart = document.getElementById("cart");
+const productsCartStorage = document.querySelector(".cart__main");
+
 const btnOpenCart = document.getElementById("open");
 const btnCloseCart = document.getElementById("close");
 //contenedor de pizzas
@@ -107,6 +109,45 @@ const closeOnScroll = () => {
 const closeOnOverlayClick = () => {
   productsCart.classList.remove("is-active");
   overlay.classList.remove("show-overlay");
+};
+//funciones del carrito
+const renderCartProduct = (cartProduct) => {
+  const { img, name, desc, price, quantity } = cartProduct;
+  return `    
+      <div class="card card--cart box-shadow">
+          <img
+            class="card__img"
+            src="${img}"
+            alt="pizza recomendada"/>
+          <div class="card__info">
+            <p class="card__name">${name}</p>
+            <p class="card__description">${desc}</p>
+            <p class="card__price gradient-text">$${price}</p>
+          </div>
+          <div class="card__buttons">
+            <button class="btn btn--cart down data-id=${id}">-</button>
+            <span class="card__quantity">${quantity}</span>
+            <button class="btn btn--cart up data-id=${id}">+</button>
+          </div>
+        </div>
+        `;
+};
+
+const renderCart = () => {
+  // si el carrito esta vacio muestra un msg
+  if (!productsCartStorage.length) {
+    productsCartStorage.innerHTML = `<p class="empty-msg"> No hay productos en el carrito. </p>`;
+    return;
+  }
+  // renderiza los productos que hay
+  productsCartStorage.innerHTML = cart.map(renderCartProduct).join("");
+};
+//funcion para para conseguir el total entre todos los productos del carrito
+const getCartTotal = () => {
+  return cartStorage.reduce(
+    (acc, cur) => acc + Number(cur.price) * Number(cur.quantity),
+    0
+  );
 };
 
 const init = () => {
