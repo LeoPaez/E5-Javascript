@@ -1,9 +1,23 @@
 const productsCart = document.getElementById("cart");
 const btnOpenCart = document.getElementById("open");
 const btnCloseCart = document.getElementById("close");
-const productsCont = document.querySelector(".pizzas__cards")
-const categories = document.querySelector(".categories__cards")
-const categoriesList = document.querySelectorAll(".card--category")
+//contenedor de pizzas
+const productsCont = document.querySelector(".pizzas__cards");
+//contenedor de categorias
+const categories = document.querySelector(".categories__cards");
+//lista de categorias
+const categoriesList = document.querySelectorAll(".card--category");
+// overlay
+const overlay = document.querySelector(".overlay");
+
+//funcion para buscar en localStorage
+let cartStorage = JSON.parse(localStorage.getItem("cart")) || [];
+//funcion para guardar en localStorage
+const saveLocalStorage = (cartList) => {
+  localStorage.setItem("cart", JSON.stringify(cartList));
+};
+
+console.log(cartStorage);
 
 const renderProduct = (product) => {
   const { img, name, desc, price } = product;
@@ -72,24 +86,32 @@ const applyFilter = (e) => {
   } else {
     renderProducts(e.target.dataset.category);
   }
-  if(productsCont.innerHTML == "") {
-    productsCont.innerHTML = "<p class='out-stock'>Sin Stock</p>"
+  if (productsCont.innerHTML == "") {
+    productsCont.innerHTML = "<p class='out-stock'>Sin Stock</p>";
   }
 };
 
-
+//abrir-cerrar carrito con overlay
+const toggleCart = () => {
+  productsCart.classList.toggle("is-active");
+  overlay.classList.toggle("show-overlay");
+};
 
 const init = () => {
-  renderProducts()
+  renderProducts();
   //Aplicar filtro
   categories.addEventListener("click", applyFilter);
   //Carrito
+  btnOpenCart.addEventListener("click", toggleCart);
+  btnCloseCart.addEventListener("click", toggleCart);
+
+  /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");
   });
   btnCloseCart.addEventListener("click", () => {
     productsCart.classList.remove("is-active");
-  });
+  });*/
 };
 
 window.addEventListener("DOMContentLoaded", init);

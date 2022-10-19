@@ -331,7 +331,7 @@ img {
   );
 }
 .active {
-  background: #4D4D4D;
+  background: #4d4d4d;
 }
 /******* Pizzas populares ********/
 .pizzas {
@@ -376,7 +376,7 @@ img {
 }
 .out-stock {
   font-size: 26px;
-  color: #FFF;
+  color: #fff;
 }
 
 /******* Footer ********/
@@ -411,6 +411,7 @@ img {
 
 /******* Cart ********/
 .cart {
+  z-index: 1;
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -553,4 +554,28 @@ img {
   .card--cart {
     flex-direction: row;
   }
+}
+
+/*overlay*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 1000vh;
+  width: 100%;
+  z-index: 1; /*Para que quede por encima del resto de las cosas*/
+
+  /*Efecto de Glassmorphismo*/
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: none;
+}
+
+/*Toggle para el overlay (para que funcione unicamente cuando abrimos carrito o menu hamburguesa.
+  Aclarar que funciona porque son elementos hermanos y overlay esta debajo de los dos inputs en el código.*/
+.show-overlay {
+  display: block;
 }
