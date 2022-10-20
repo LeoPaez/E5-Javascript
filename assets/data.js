@@ -187,5 +187,3 @@ const mostPopularProducts = () => {
   }
   return popularProducts;
 };
-
-console.log(mostPopularProducts());
