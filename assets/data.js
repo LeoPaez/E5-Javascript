@@ -31,6 +31,7 @@ const products = [
     desc: "¡Eterna!",
     price: 450,
     category: "pizzas",
+    recommended: true,
   },
   {
     id: 5,
@@ -80,6 +81,7 @@ const products = [
     desc: "¡Ahora con más!",
     price: 380,
     category: "hamburguesas",
+    recommended: true,
   },
   {
     id: 11,
@@ -113,6 +115,7 @@ const products = [
     desc: "Las mejores",
     price: 300,
     category: "napapuki",
+    recommended: true,
   },
   {
     id: 15,
@@ -172,17 +175,17 @@ const products = [
     desc: "Con crema",
     price: 250,
     category: "batidos",
-  }
-]
+  },
+];
 
 const mostPopularProducts = () => {
-  const popularProducts = []
+  const popularProducts = [];
   for (let i = 0; i < 16; i++) {
     if (i % 2 == 0) {
-      popularProducts.push(products[i])
+      popularProducts.push(products[i]);
     }
   }
   return popularProducts;
-}
+};
 
 console.log(mostPopularProducts());

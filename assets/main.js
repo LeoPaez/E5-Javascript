@@ -5,6 +5,8 @@ const btnOpenCart = document.getElementById("open");
 const btnCloseCart = document.getElementById("close");
 //contenedor de pizzas
 const productsCont = document.querySelector(".pizzas__cards");
+//contenedor de pizzas recomendadas
+const recommendsCont = document.querySelector(".recommended__cards");
 //contenedor de categorias
 const categories = document.querySelector(".categories__cards");
 //lista de categorias
@@ -65,6 +67,14 @@ const renderProducts = (category = undefined) => {
     return;
   }
   renderFilteredProducts(category);
+};
+
+const renderRecommendedProducts = () => {
+  const recommendedProducts = products.filter(
+    (product) => product.recommended === true
+  );
+  console.log(recommendedProducts);
+  recommendsCont.innerHTML = recommendedProducts.map(renderProduct).join("");
 };
 
 // Filtros
@@ -150,11 +160,16 @@ const renderCart = () => {
 };
 //funcion para para conseguir el total entre todos los productos del carrito
 const getCartTotal = () => {
-  return cart.reduce(
-    (acc, cur) => acc + Number(cur.price) * Number(cur.quantity),
-    0
-  );
+  return cart.reduce((acc, cur) => {
+    if (cur.price === "Gratis") {
+      //Si el precio el 'gratis' suma 0 al total
+      return acc + 0;
+    } else {
+      return acc + Number(cur.price) * Number(cur.quantity);
+    }
+  }, 0);
 };
+
 //renderiza el total de los productos
 const showTotal = () => {
   total.innerHTML = `${getCartTotal().toFixed(2)} $`;
@@ -229,6 +244,7 @@ const init = () => {
   overlay.addEventListener("click", closeOnOverlayClick);
   document.addEventListener("DOMContentLoaded", renderCart);
   document.addEventListener("DOMContentLoaded", showTotal);
+  document.addEventListener("DOMContentLoaded", renderRecommendedProducts);
   disableBtn(btnDelete);
   disableBtn(btnBuy);
   document.addEventListener("click", addProduct);
