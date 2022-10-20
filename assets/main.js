@@ -37,7 +37,7 @@ const renderProduct = (product) => {
         <div class="card__info">
           <p class="card__name">${name}</p>
           <p class="card__description">${desc}</p>
-          <p class="card__price gradient-text">$${price}</p>
+          <p class="card__price gradient-text">$ ${price}</p>
         </div>
         <button class="btn btn--add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
       </div>

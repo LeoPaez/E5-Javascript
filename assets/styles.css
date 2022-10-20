@@ -262,6 +262,13 @@ img {
     margin: 0px;
   }
 }
+.card__img--recommended {
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  border-radius: 16px;
+  background-position: center 0;
+}
 .card__info {
   display: flex;
   flex-direction: column;
