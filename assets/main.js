@@ -18,7 +18,6 @@ const btnDelete = document.querySelector(".btn-delete");
 //El total en precio del carrito
 const total = document.querySelector(".total");
 
-
 //funcion para buscar en localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 //funcion para guardar en localStorage
@@ -29,7 +28,7 @@ const saveLocalStorage = (cartList) => {
 console.log(cart);
 
 const renderProduct = (product) => {
-  const { img, name, desc, price } = product;
+  const { img, name, desc, price, id } = product;
 
   return `
     <div class="card card--pizza">
@@ -40,7 +39,7 @@ const renderProduct = (product) => {
           <p class="card__description">${desc}</p>
           <p class="card__price gradient-text">$${price}</p>
         </div>
-        <button class="btn">Agregar</button>
+        <button class="btn btn--add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
       </div>
     </div>
   `;
@@ -119,11 +118,11 @@ const closeOnOverlayClick = () => {
 };
 //funciones del carrito
 const renderCartProduct = (cartProduct) => {
-  const {id, img, name, desc, price, quantity } = cartProduct;
+  const { id, img, name, desc, price, quantity } = cartProduct;
   return `    
       <div class="card card--cart box-shadow">
           <img
-            class="card__img"
+            class="card__img--cart"
             src="${img}"
             alt="pizza recomendada"/>
           <div class="card__info">
@@ -164,12 +163,59 @@ const showTotal = () => {
 //funcion para deshabilitar los botones si no hay nada en el carrito
 const disableBtn = (btn) => {
   if (!cart.length) {
-    btn.classList.remove("btn")
+    btn.classList.remove("btn");
     btn.classList.add("disabled");
     return;
   }
-  btn.classList.add("btn")
+  btn.classList.add("btn");
   btn.classList.remove("disabled");
+};
+
+//Crea un objeto con la data del producto
+const createProductObj = (id, price, img, name, desc) => {
+  return { id, price, img, name, desc };
+};
+
+//Agrega el objeto del producto al carrito
+const createCartProduct = (product) => {
+  cart = [...cart, { ...product, quantity: 1 }];
+};
+
+//Comprueba si el producto existe el carrito
+const isExistingCartProduct = (product) => {
+  return cart.find((itemCart) => itemCart.id === product.id);
+};
+
+//Aumenta la cantidad del producto en 1
+const addUnitToProduct = (product) => {
+  cart = cart.map((itemCart) =>
+    itemCart.id === product.id
+      ? { ...itemCart, quantity: itemCart.quantity + 1 }
+      : itemCart
+  );
+};
+
+//Funcion que reutiliza otras funciones necesarias en cada cambio del carrito
+const checkCartState = () => {
+  saveLocalStorage(cart);
+  renderCart();
+  showTotal();
+  disableBtn(btnBuy);
+  disableBtn(btnDelete);
+};
+
+//funcion que se encarga de agregar un producto al carrito
+const addProduct = (e) => {
+  if (!e.target.classList.contains("btn--add")) return;
+  const { id, price, img, name, desc } = e.target.dataset;
+  const product = createProductObj(id, price, img, name, desc);
+
+  if (isExistingCartProduct(product)) {
+    addUnitToProduct(product);
+  } else {
+    createCartProduct(product);
+  }
+  checkCartState();
 };
 
 const init = () => {
@@ -182,9 +228,10 @@ const init = () => {
   window.addEventListener("scroll", closeOnScroll);
   overlay.addEventListener("click", closeOnOverlayClick);
   document.addEventListener("DOMContentLoaded", renderCart);
-  document.addEventListener("DOMContentLoaded",showTotal);
+  document.addEventListener("DOMContentLoaded", showTotal);
   disableBtn(btnDelete);
   disableBtn(btnBuy);
+  document.addEventListener("click", addProduct);
   /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");

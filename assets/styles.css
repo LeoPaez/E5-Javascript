@@ -375,6 +375,13 @@ img {
   background-position: center 0;
   object-fit: cover;
 }
+.card__img--cart {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background-position: center 0;
+  object-fit: cover;
+}
 .out-stock {
   font-size: 26px;
   color: #fff;
@@ -603,19 +610,23 @@ img {
   font-size: 18px;
 }
 
-.btn-contain{width: 100%;
+.btn-contain {
+  width: 100%;
   height: 10%;
-  text-align: center;}
-.btn-buy,.btn-delete{    height: 50%;
+  text-align: center;
+}
+.btn-buy,
+.btn-delete {
+  height: 50%;
   width: 43%;
-  margin: 10px;}
+  margin: 10px;
+}
 
-
-  .disabled {
-    font-size: 12px;
+.disabled {
+  font-size: 12px;
   cursor: pointer;
   padding: 8px 15px;
-  border: 1PX solid white;
+  border: 1px solid white;
   border-radius: 15px;
   color: white;
   background-image: linear-gradient(
@@ -624,13 +635,13 @@ img {
     var(--black) 90%
   );
   cursor: not-allowed;
-  }
+}
 
-  .disabled:hover {
-    font-size: 12px;
+.disabled:hover {
+  font-size: 12px;
   cursor: pointer;
   padding: 8px 15px;
-  border: 1PX SOLID white;
+  border: 1px SOLID white;
   border-radius: 15px;
   color: white;
   background-image: linear-gradient(
@@ -639,4 +650,4 @@ img {
     var(--gray) 90%
   );
   cursor: not-allowed;
-  }
+}
