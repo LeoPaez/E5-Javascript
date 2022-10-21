@@ -47,6 +47,23 @@ const renderProduct = (product) => {
   `;
 };
 
+const renderRecommendedProduct = (product) => {
+  const { img, name, desc, price, id } = product;
+
+  return `
+    <div class="card-recommended box-shadow">
+      <img class="card__img--recommended" src="${img}" alt="producto popular">
+      <div class="card__info">
+          <p class="card__name">${name}</p>
+          <p class="card__description">${desc}</p>
+          <p class="card__price gradient-text">$ ${price}</p>
+      </div>
+        <button class="btn btn--add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
+      </div>
+    </div>
+  `;
+};
+
 // Renderizar productos
 const renderPopularProducts = () => {
   productsCont.innerHTML += mostPopularProducts()
@@ -73,8 +90,7 @@ const renderRecommendedProducts = () => {
   const recommendedProducts = products.filter(
     (product) => product.recommended === true
   );
-  console.log(recommendedProducts);
-  recommendsCont.innerHTML = recommendedProducts.map(renderProduct).join("");
+  recommendsCont.innerHTML = recommendedProducts.map(renderRecommendedProduct).join("");
 };
 
 // Filtros

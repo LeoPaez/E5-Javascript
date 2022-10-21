@@ -239,31 +239,29 @@ a {
 .recommended__cards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 35px;
   margin-block: 30px;
 }
 
+.card-recommended {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 350px;
+  background-color: var(--black);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 0 auto;
+  width: 100%;
+}
 @media (min-width: 992px) {
   .recommended__cards {
     flex-direction: row;
     justify-content: center;
-    gap: 35px;
+    align-items: center;
   }
-}
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
-  background-color: var(--black);
-  border-radius: 15px;
-  padding: 15px;
-}
-@media (min-width: 992px) {
-  .card {
-    margin: 0px;
+  .card-recommended {
+    margin: 0;
   }
 }
 .card__img--recommended {
@@ -346,6 +344,21 @@ a {
   background: #4d4d4d;
 }
 /******* Pizzas populares ********/
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 350px;
+  margin: 0 auto;
+  background-color: var(--black);
+  border-radius: 15px;
+  padding: 15px 25px;
+}
+@media (min-width: 992px) {
+  .card {
+    margin: 0px;
+  }
+}
 .pizzas {
   margin-block: 40px;
 }
@@ -357,7 +370,7 @@ a {
 .pizzas__cards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   margin-block: 30px;
   min-height: 207px;
 }
