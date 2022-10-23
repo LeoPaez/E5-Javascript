@@ -645,6 +645,27 @@ a {
   width: 43%;
   margin: 10px;
 }
+.add-modal{
+              place-content: center;
+              padding: 15px 0px;
+              display: flex;
+              align-items: center;
+              color:#bd7904;
+              background-color: #4d4d4d;
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+              transition: all 0.5s ease-out;
+              text-align: center;
+              transform: translateY(200%);
+}
+
+.active-modal{
+  transition: all 0.5s ease-in;
+  transform: rotateY(0);
+}
+
+
 
 .disabled {
   font-size: 12px;

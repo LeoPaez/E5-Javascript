@@ -19,6 +19,9 @@ const btnBuy = document.querySelector(".btn-buy");
 const btnDelete = document.querySelector(".btn-delete");
 //El total en precio del carrito
 const total = document.querySelector(".total");
+//  Modal de agregado al carrito.
+const successModal = document.querySelector(".add-modal");
+
 
 //funcion para buscar en localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -235,6 +238,17 @@ const checkCartState = () => {
   disableBtn(btnDelete);
 };
 
+//modal de agregado 
+const showSuccessModal = (msg) => {
+  successModal.classList.add("active-modal");
+  successModal.textContent = msg;
+  setTimeout(() => {
+    successModal.classList.remove("active-modal");
+  }, 1500);
+};
+
+
+
 //funcion que se encarga de agregar un producto al carrito
 const addProduct = (e) => {
   if (!e.target.classList.contains("btn--add")) return;
@@ -243,8 +257,10 @@ const addProduct = (e) => {
 
   if (isExistingCartProduct(product)) {
     addUnitToProduct(product);
+    showSuccessModal("Se agregó una unidad del producto al carrito");
   } else {
     createCartProduct(product);
+    showSuccessModal("El producto se ha agregado al carrito");
   }
   checkCartState();
 };

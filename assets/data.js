@@ -31,7 +31,7 @@ const products = [
     desc: "¡Eterna!",
     price: 450,
     category: "pizzas",
-    recommended: true,
+    
   },
   {
     id: 5,
@@ -64,6 +64,7 @@ const products = [
     desc: "La que desaparece",
     price: "Gratis",
     category: "pizzas",
+    recommended: true,
   },
   // Hamburguesas
   {
