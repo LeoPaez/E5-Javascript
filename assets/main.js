@@ -1,7 +1,9 @@
 const productsCart = document.getElementById("cart");
+
 const productsCartStorage = document.querySelector(".cart__main");
 
 const btnOpenCart = document.getElementById("open");
+
 const btnCloseCart = document.getElementById("close");
 //contenedor de pizzas
 const productsCont = document.querySelector(".pizzas__cards");
@@ -44,7 +46,7 @@ const renderProduct = (product) => {
           <p class="card__description">${desc}</p>
           <p class="card__price gradient-text">$ ${price}</p>
         </div>
-        <button class="btn btn--add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
+        <button class="btn btn-add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
       </div>
     </div>
   `;
@@ -61,7 +63,7 @@ const renderRecommendedProduct = (product) => {
           <p class="card__description">${desc}</p>
           <p class="card__price gradient-text">$ ${price}</p>
       </div>
-        <button class="btn btn--add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
+        <button class="btn btn-add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
       </div>
     </div>
   `;
@@ -160,9 +162,9 @@ const renderCartProduct = (cartProduct) => {
             <p class="card__price gradient-text">$${price}</p>
           </div>
           <div class="card__buttons">
-            <button class="btn btn--cart down data-id=${id}">-</button>
+            <button class="btn btn--cart down" data-id="${id}">-</button>
             <span class="card__quantity">${quantity}</span>
-            <button class="btn btn--cart up data-id=${id}">+</button>
+            <button class="btn btn--cart up" data-id="${id}">+</button>
           </div>
         </div>
         `;
@@ -220,14 +222,6 @@ const isExistingCartProduct = (product) => {
   return cart.find((itemCart) => itemCart.id === product.id);
 };
 
-//Aumenta la cantidad del producto en 1
-const addUnitToProduct = (product) => {
-  cart = cart.map((itemCart) =>
-    itemCart.id === product.id
-      ? { ...itemCart, quantity: itemCart.quantity + 1 }
-      : itemCart
-  );
-};
 
 //Funcion que reutiliza otras funciones necesarias en cada cambio del carrito
 const checkCartState = () => {
@@ -251,10 +245,11 @@ const showSuccessModal = (msg) => {
 
 //funcion que se encarga de agregar un producto al carrito
 const addProduct = (e) => {
-  if (!e.target.classList.contains("btn--add")) return;
+  if (!e.target.classList.contains("btn-add")) return;
   const { id, price, img, name, desc } = e.target.dataset;
   const product = createProductObj(id, price, img, name, desc);
-
+  
+  
   if (isExistingCartProduct(product)) {
     addUnitToProduct(product);
     showSuccessModal("Se agregó una unidad del producto al carrito");
@@ -263,6 +258,92 @@ const addProduct = (e) => {
     showSuccessModal("El producto se ha agregado al carrito");
   }
   checkCartState();
+};
+
+const removeProductFromCart = (existingProduct) => {
+  cart = cart.filter(product => product.id !== existingProduct.id)
+  checkCartState()
+}
+
+//Aumenta la cantidad del producto en 1
+const addUnitToProduct = (product) => {
+  cart = cart.map((cartProduct) => {
+    return cartProduct.id === product.id
+      ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+      : cartProduct;
+  });
+};
+
+const substractProductUnit = (existingProduct) => {
+  cart = cart.map((cartProduct) => {
+    return cartProduct.id === existingProduct.id
+      ? { ...cartProduct, quantity: cartProduct.quantity - 1 }
+      : cartProduct;
+  });
+};
+const handlePlusBtnEvent = (id) => {
+ 
+  const existingCartProduct = cart.find((item)=> item.id === id);
+  addUnitToProduct(existingCartProduct); 
+};
+
+
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id)
+
+
+  if(existingCartProduct.quantity === 1) {
+    if (window.confirm("Desea eliminar el product del carrito?")){
+      removeProductFromCart(existingCartProduct);
+    }
+    return;
+  } 
+  substractProductUnit(existingCartProduct);
+};
+
+
+
+
+
+
+const handleQuantity = (e) => {
+  if (e.target.classList.contains("down")) {
+    handleMinusBtnEvent(e.target.dataset.id);
+  } else if (e.target.classList.contains("up")) {
+    handlePlusBtnEvent(e.target.dataset.id);
+  }
+  checkCartState();
+};
+
+
+
+const resetCartItems = () => {
+  cart = [];
+  checkCartState();
+};
+
+//
+const completeCartAction = (confirmMsg, successMsg) => {
+  if (!cart.length) return;
+  if (window.confirm(confirmMsg)) {
+    resetCartItems();
+    alert(successMsg);
+  }
+};
+//
+//
+const completeBuy = () => {
+  completeCartAction(
+    "¿Desea completar su compra?",
+    "La compra se ha realizado correctamente"
+  );
+};
+
+const deleteCart = () => {
+  completeCartAction(
+    "¿Está seguro de que desea vaciar el carrito?",
+    "No hay productos en el carrito"
+  );
 };
 
 const init = () => {
@@ -277,9 +358,15 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", renderCart);
   document.addEventListener("DOMContentLoaded", showTotal);
   document.addEventListener("DOMContentLoaded", renderRecommendedProducts);
+  document.addEventListener("click", addProduct);
+  
+  productsCart.addEventListener("click", handleQuantity)
+
+  btnBuy.addEventListener("click", completeBuy)
+  btnDelete.addEventListener("click", deleteCart)
   disableBtn(btnDelete);
   disableBtn(btnBuy);
-  document.addEventListener("click", addProduct);
+  
   /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");
