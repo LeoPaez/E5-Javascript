@@ -1,39 +1,68 @@
+//Carrito
 const productsCart = document.getElementById("cart");
-
+//Productos del carrito
 const productsCartStorage = document.querySelector(".cart__main");
-
+//Boton abrir carrito
 const btnOpenCart = document.getElementById("open");
-
+//Boton cerrar carrito
 const btnCloseCart = document.getElementById("close");
-//contenedor de pizzas
+//Contenedor de pizzas
 const productsCont = document.querySelector(".pizzas__cards");
-//contenedor de pizzas recomendadas
+//Contenedor de pizzas recomendadas
 const recommendsCont = document.querySelector(".recommended__cards");
-//contenedor de categorias
+//Contenedor de categorias
 const categories = document.querySelector(".categories__cards");
-//lista de categorias
+//Lista de categorias
 const categoriesList = document.querySelectorAll(".card--category");
-// overlay
+//Overlay
 const overlay = document.querySelector(".overlay");
-//selecciono btn-buy
+//Selecciono btn-buy
 const btnBuy = document.querySelector(".btn-buy");
-//selecciono btn-delete
+//Selecciono btn-delete
 const btnDelete = document.querySelector(".btn-delete");
 //El total en precio del carrito
 const total = document.querySelector(".total");
-//  Modal de agregado al carrito.
+// Modal de agregado al carrito.
 const successModal = document.querySelector(".add-modal");
 
 
-//funcion para buscar en localStorage
+//Funcion para buscar en localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-//funcion para guardar en localStorage
+
+//Funcion para guardar en localStorage
 const saveLocalStorage = (cartList) => {
   localStorage.setItem("cart", JSON.stringify(cartList));
 };
 
-console.log(cart);
 
+//Renderizar producto recomendado
+const renderRecommendedProduct = (product) => {
+  const { img, name, desc, price, id } = product;
+
+  return `
+    <div class="card-recommended box-shadow">
+      <img class="card__img--recommended" src="${img}" alt="producto popular">
+      <div class="card__info">
+          <p class="card__name">${name}</p>
+          <p class="card__description">${desc}</p>
+          <p class="card__price gradient-text">$ ${price}</p>
+      </div>
+        <button class="btn btn-add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
+      </div>
+    </div>
+  `;
+};
+
+//Renderizar productos recomendados
+const renderRecommendedProducts = () => {
+  const recommendedProducts = products.filter(
+    (product) => product.recommended === true
+  );
+  recommendsCont.innerHTML = recommendedProducts.map(renderRecommendedProduct).join("");
+};
+
+
+//Renderizar producto
 const renderProduct = (product) => {
   const { img, name, desc, price, id } = product;
 
@@ -52,37 +81,7 @@ const renderProduct = (product) => {
   `;
 };
 
-const renderRecommendedProduct = (product) => {
-  const { img, name, desc, price, id } = product;
-
-  return `
-    <div class="card-recommended box-shadow">
-      <img class="card__img--recommended" src="${img}" alt="producto popular">
-      <div class="card__info">
-          <p class="card__name">${name}</p>
-          <p class="card__description">${desc}</p>
-          <p class="card__price gradient-text">$ ${price}</p>
-      </div>
-        <button class="btn btn-add" data-id='${id}' data-name='${name}' data-price='${price}' data-img='${img}' data-desc='${desc}'>Agregar</button>
-      </div>
-    </div>
-  `;
-};
-
-// Renderizar productos
-const renderPopularProducts = () => {
-  productsCont.innerHTML += mostPopularProducts()
-    .map(renderProduct) // .map((e) => renderProduct(e))
-    .join("");
-};
-
-const renderFilteredProducts = (category) => {
-  const productsList = products.filter(
-    (product) => product.category === category
-  );
-  productsCont.innerHTML = productsList.map(renderProduct).join("");
-};
-
+//Renderizar productos
 const renderProducts = (category = undefined) => {
   if (!category) {
     renderPopularProducts();
@@ -91,12 +90,21 @@ const renderProducts = (category = undefined) => {
   renderFilteredProducts(category);
 };
 
-const renderRecommendedProducts = () => {
-  const recommendedProducts = products.filter(
-    (product) => product.recommended === true
-  );
-  recommendsCont.innerHTML = recommendedProducts.map(renderRecommendedProduct).join("");
+// Renderizar productos populares
+const renderPopularProducts = () => {
+  productsCont.innerHTML += mostPopularProducts()
+    .map(renderProduct) // .map((e) => renderProduct(e))
+    .join("");
 };
+
+//Renderizar productos filtrados
+const renderFilteredProducts = (category) => {
+  const productsList = products.filter(
+    (product) => product.category === category
+  );
+  productsCont.innerHTML = productsList.map(renderProduct).join("");
+};
+
 
 // Filtros
 const changeFilterState = (e) => {
@@ -130,24 +138,27 @@ const applyFilter = (e) => {
   }
 };
 
-//abrir-cerrar carrito con overlay
+// Carrito
+//Abrir-cerrar carrito con overlay
 const toggleCart = () => {
   productsCart.classList.toggle("is-active");
   overlay.classList.toggle("show-overlay");
 };
 
-//cerrar el carrito cuando scrolleamos
+//Cerrar el carrito cuando scrolleamos
 const closeOnScroll = () => {
   if (!productsCart.classList.contains("is-active")) return;
   productsCart.classList.remove("is-active");
   overlay.classList.remove("show-overlay");
 };
-//cerrar el carrito cuando hacemos click fuera del carrito
+
+//Cerrar el carrito cuando hacemos click fuera del carrito
 const closeOnOverlayClick = () => {
   productsCart.classList.remove("is-active");
   overlay.classList.remove("show-overlay");
 };
-//funciones del carrito
+
+//Funciones del carrito
 const renderCartProduct = (cartProduct) => {
   const { id, img, name, desc, price, quantity } = cartProduct;
   return `    
@@ -179,7 +190,8 @@ const renderCart = () => {
   // renderiza los productos que hay
   productsCartStorage.innerHTML = cart.map(renderCartProduct).join("");
 };
-//funcion para para conseguir el total entre todos los productos del carrito
+
+//Funcion para para conseguir el total entre todos los productos del carrito
 const getCartTotal = () => {
   return cart.reduce((acc, cur) => {
     if (cur.price === "Gratis") {
@@ -191,12 +203,12 @@ const getCartTotal = () => {
   }, 0);
 };
 
-//renderiza el total de los productos
+//Renderizar el total de los productos
 const showTotal = () => {
   total.innerHTML = `${getCartTotal().toFixed(2)} $`;
 };
 
-//funcion para deshabilitar los botones si no hay nada en el carrito
+//Funcion para deshabilitar los botones si no hay nada en el carrito
 const disableBtn = (btn) => {
   if (!cart.length) {
     btn.classList.remove("btn");
@@ -205,6 +217,23 @@ const disableBtn = (btn) => {
   }
   btn.classList.add("btn");
   btn.classList.remove("disabled");
+};
+
+//Funcion que se encarga de agregar un producto al carrito
+const addProduct = (e) => {
+  if (!e.target.classList.contains("btn-add")) return;
+  const { id, price, img, name, desc } = e.target.dataset;
+  const product = createProductObj(id, price, img, name, desc);
+  
+  
+  if (isExistingCartProduct(product)) {
+    addUnitToProduct(product);
+    showSuccessModal("Se agregó una unidad del producto al carrito");
+  } else {
+    createCartProduct(product);
+    showSuccessModal("El producto se ha agregado al carrito");
+  }
+  checkCartState();
 };
 
 //Crea un objeto con la data del producto
@@ -232,7 +261,7 @@ const checkCartState = () => {
   disableBtn(btnDelete);
 };
 
-//modal de agregado 
+//Modal de agregado 
 const showSuccessModal = (msg) => {
   successModal.classList.add("active-modal");
   successModal.textContent = msg;
@@ -241,25 +270,7 @@ const showSuccessModal = (msg) => {
   }, 1500);
 };
 
-
-
-//funcion que se encarga de agregar un producto al carrito
-const addProduct = (e) => {
-  if (!e.target.classList.contains("btn-add")) return;
-  const { id, price, img, name, desc } = e.target.dataset;
-  const product = createProductObj(id, price, img, name, desc);
-  
-  
-  if (isExistingCartProduct(product)) {
-    addUnitToProduct(product);
-    showSuccessModal("Se agregó una unidad del producto al carrito");
-  } else {
-    createCartProduct(product);
-    showSuccessModal("El producto se ha agregado al carrito");
-  }
-  checkCartState();
-};
-
+//Remover producto del carrito
 const removeProductFromCart = (existingProduct) => {
   cart = cart.filter(product => product.id !== existingProduct.id)
   checkCartState()
@@ -274,6 +285,7 @@ const addUnitToProduct = (product) => {
   });
 };
 
+//Disminuir la unidad del producto
 const substractProductUnit = (existingProduct) => {
   cart = cart.map((cartProduct) => {
     return cartProduct.id === existingProduct.id
@@ -281,19 +293,21 @@ const substractProductUnit = (existingProduct) => {
       : cartProduct;
   });
 };
+
+//Si aumentamos la unidad del producto
 const handlePlusBtnEvent = (id) => {
  
   const existingCartProduct = cart.find((item)=> item.id === id);
   addUnitToProduct(existingCartProduct); 
 };
 
-
+//Si disminuimos la unidad del producto
 const handleMinusBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id)
 
 
   if(existingCartProduct.quantity === 1) {
-    if (window.confirm("Desea eliminar el product del carrito?")){
+    if (window.confirm("Desea eliminar el producto del carrito?")){
       removeProductFromCart(existingCartProduct);
     }
     return;
@@ -301,11 +315,7 @@ const handleMinusBtnEvent = (id) => {
   substractProductUnit(existingCartProduct);
 };
 
-
-
-
-
-
+//Comprueba si estamos disminuyendo o sumando la unidad
 const handleQuantity = (e) => {
   if (e.target.classList.contains("down")) {
     handleMinusBtnEvent(e.target.dataset.id);
@@ -315,14 +325,12 @@ const handleQuantity = (e) => {
   checkCartState();
 };
 
-
-
 const resetCartItems = () => {
   cart = [];
   checkCartState();
 };
 
-//
+//Funcionalidad de los botones del carrito
 const completeCartAction = (confirmMsg, successMsg) => {
   if (!cart.length) return;
   if (window.confirm(confirmMsg)) {
@@ -330,8 +338,8 @@ const completeCartAction = (confirmMsg, successMsg) => {
     alert(successMsg);
   }
 };
-//
-//
+
+//Completar compra
 const completeBuy = () => {
   completeCartAction(
     "¿Desea completar su compra?",
@@ -339,18 +347,17 @@ const completeBuy = () => {
   );
 };
 
+//Vaciar carrito
 const deleteCart = () => {
   completeCartAction(
     "¿Está seguro de que desea vaciar el carrito?",
-    "No hay productos en el carrito"
+    "Tu carrito está vacio"
   );
 };
 
 const init = () => {
   renderProducts();
-  //Aplicar filtro
   categories.addEventListener("click", applyFilter);
-  //Carrito
   btnOpenCart.addEventListener("click", toggleCart);
   btnCloseCart.addEventListener("click", toggleCart);
   window.addEventListener("scroll", closeOnScroll);
@@ -359,9 +366,7 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", showTotal);
   document.addEventListener("DOMContentLoaded", renderRecommendedProducts);
   document.addEventListener("click", addProduct);
-  
   productsCart.addEventListener("click", handleQuantity)
-
   btnBuy.addEventListener("click", completeBuy)
   btnDelete.addEventListener("click", deleteCart)
   disableBtn(btnDelete);

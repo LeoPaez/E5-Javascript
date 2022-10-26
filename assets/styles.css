@@ -340,9 +340,6 @@ a {
     var(--gradient_2)
   );
 }
-.active {
-  background: #4d4d4d;
-}
 /******* Pizzas populares ********/
 .card {
   display: flex;
@@ -409,6 +406,9 @@ a {
 .out-stock {
   font-size: 26px;
   color: #fff;
+}
+.active {
+  background-color: #4d4d4d;
 }
 
 /******* Footer ********/
