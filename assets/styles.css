@@ -650,7 +650,7 @@ a {
               padding: 15px 0px;
               display: flex;
               align-items: center;
-              color:#bd7904;
+              color:var(--white);
               background-color: #4d4d4d;
               position: fixed;
               bottom: 0;
