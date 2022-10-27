@@ -1,3 +1,3 @@
 # E5-Javascript Nucba
 
-Participantes: Leonel Paez, Lucas Sánchez, nombre, nombre
+Participantes: Leonel Paez, Lucas Sánchez, Walter Schvind, nombre
