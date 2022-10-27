@@ -1,2 +1,3 @@
 # E5-Javascript Nucba
-Participantes: Leonel Paez, nombre, nombre, nombre
+
+Participantes: Leonel Paez, Lucas Sánchez, nombre, nombre
