@@ -102,6 +102,22 @@ a {
   font-size: 12px;
   color: var(--white);
 }
+.nav__link--icon {
+  position: relative;
+}
+.nav__span {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  border: 1px solid var(--white);
+  background-color: var(--red);
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  text-align: center;
+  font-size: 9px;
+  line-height: 11.79px;
+}
 
 /******* Section Hero ********/
 .hero {
@@ -645,27 +661,25 @@ a {
   width: 43%;
   margin: 10px;
 }
-.add-modal{
-              place-content: center;
-              padding: 15px 0px;
-              display: flex;
-              align-items: center;
-              color:var(--white);
-              background-color: #4d4d4d;
-              position: fixed;
-              bottom: 0;
-              width: 100%;
-              transition: all 0.5s ease-out;
-              text-align: center;
-              transform: translateY(200%);
+.add-modal {
+  place-content: center;
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  background-color: #4d4d4d;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: all 0.5s ease-out;
+  text-align: center;
+  transform: translateY(200%);
 }
 
-.active-modal{
+.active-modal {
   transition: all 0.5s ease-in;
   transform: rotateY(0);
 }
-
-
 
 .disabled {
   font-size: 12px;

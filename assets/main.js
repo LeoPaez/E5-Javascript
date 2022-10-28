@@ -24,7 +24,8 @@ const btnDelete = document.querySelector(".btn-delete");
 const total = document.querySelector(".total");
 // Modal de agregado al carrito.
 const successModal = document.querySelector(".add-modal");
-
+//Span que muestra el numero de pedidos en el carrito
+const cartCount = document.getElementById("icon-span");
 
 //Funcion para buscar en localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -33,7 +34,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const saveLocalStorage = (cartList) => {
   localStorage.setItem("cart", JSON.stringify(cartList));
 };
-
 
 //Renderizar producto recomendado
 const renderRecommendedProduct = (product) => {
@@ -58,9 +58,10 @@ const renderRecommendedProducts = () => {
   const recommendedProducts = products.filter(
     (product) => product.recommended === true
   );
-  recommendsCont.innerHTML = recommendedProducts.map(renderRecommendedProduct).join("");
+  recommendsCont.innerHTML = recommendedProducts
+    .map(renderRecommendedProduct)
+    .join("");
 };
-
 
 //Renderizar producto
 const renderProduct = (product) => {
@@ -104,7 +105,6 @@ const renderFilteredProducts = (category) => {
   );
   productsCont.innerHTML = productsList.map(renderProduct).join("");
 };
-
 
 // Filtros
 const changeFilterState = (e) => {
@@ -203,6 +203,25 @@ const getCartTotal = () => {
   }, 0);
 };
 
+const getTotalProductsInCart = () => {
+  let count = 0;
+  for (let i = 0; i < cart.length; i++) {
+    const element = cart[i].quantity;
+    count += element;
+  }
+  return count;
+};
+
+const showTotalProductsInCart = () => {
+  const count = getTotalProductsInCart();
+  if (count < 1) {
+    cartCount.style.display = "none";
+    return;
+  }
+  cartCount.style.display = "block";
+  cartCount.innerHTML = count;
+};
+
 //Renderizar el total de los productos
 const showTotal = () => {
   total.innerHTML = `${getCartTotal().toFixed(2)} $`;
@@ -224,8 +243,7 @@ const addProduct = (e) => {
   if (!e.target.classList.contains("btn-add")) return;
   const { id, price, img, name, desc } = e.target.dataset;
   const product = createProductObj(id, price, img, name, desc);
-  
-  
+
   if (isExistingCartProduct(product)) {
     addUnitToProduct(product);
     showSuccessModal("Se agregó una unidad del producto al carrito");
@@ -251,17 +269,17 @@ const isExistingCartProduct = (product) => {
   return cart.find((itemCart) => itemCart.id === product.id);
 };
 
-
 //Funcion que reutiliza otras funciones necesarias en cada cambio del carrito
 const checkCartState = () => {
   saveLocalStorage(cart);
   renderCart();
   showTotal();
+  showTotalProductsInCart();
   disableBtn(btnBuy);
   disableBtn(btnDelete);
 };
 
-//Modal de agregado 
+//Modal de agregado
 const showSuccessModal = (msg) => {
   successModal.classList.add("active-modal");
   successModal.textContent = msg;
@@ -272,9 +290,9 @@ const showSuccessModal = (msg) => {
 
 //Remover producto del carrito
 const removeProductFromCart = (existingProduct) => {
-  cart = cart.filter(product => product.id !== existingProduct.id)
-  checkCartState()
-}
+  cart = cart.filter((product) => product.id !== existingProduct.id);
+  checkCartState();
+};
 
 //Aumenta la cantidad del producto en 1
 const addUnitToProduct = (product) => {
@@ -296,22 +314,20 @@ const substractProductUnit = (existingProduct) => {
 
 //Si aumentamos la unidad del producto
 const handlePlusBtnEvent = (id) => {
- 
-  const existingCartProduct = cart.find((item)=> item.id === id);
-  addUnitToProduct(existingCartProduct); 
+  const existingCartProduct = cart.find((item) => item.id === id);
+  addUnitToProduct(existingCartProduct);
 };
 
 //Si disminuimos la unidad del producto
 const handleMinusBtnEvent = (id) => {
-  const existingCartProduct = cart.find((item) => item.id === id)
+  const existingCartProduct = cart.find((item) => item.id === id);
 
-
-  if(existingCartProduct.quantity === 1) {
-    if (window.confirm("Desea eliminar el producto del carrito?")){
+  if (existingCartProduct.quantity === 1) {
+    if (window.confirm("Desea eliminar el producto del carrito?")) {
       removeProductFromCart(existingCartProduct);
     }
     return;
-  } 
+  }
   substractProductUnit(existingCartProduct);
 };
 
@@ -366,12 +382,13 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", showTotal);
   document.addEventListener("DOMContentLoaded", renderRecommendedProducts);
   document.addEventListener("click", addProduct);
-  productsCart.addEventListener("click", handleQuantity)
-  btnBuy.addEventListener("click", completeBuy)
-  btnDelete.addEventListener("click", deleteCart)
+  productsCart.addEventListener("click", handleQuantity);
+  btnBuy.addEventListener("click", completeBuy);
+  btnDelete.addEventListener("click", deleteCart);
   disableBtn(btnDelete);
   disableBtn(btnBuy);
-  
+  document.addEventListener("DOMContentLoaded", showTotalProductsInCart());
+
   /*
   btnOpenCart.addEventListener("click", () => {
     productsCart.classList.add("is-active");
